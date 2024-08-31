@@ -12,8 +12,8 @@ const Header = () => {
 
   const getClasses = (theme) => {
     return theme === "light"
-      ? "bg-[#2D8C7F] text-[#DCF9EB]"
-      : "bg-[#0F5734] text-[#DCF9EB]";
+      ? "bg-[#2D8C7F] text-gray-50"
+      : "bg-[#0F5734] text-gray-50";
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Header = () => {
           <input
             ref={inputRef}
             type="text"
-            className="h-14 sm:h-20 w-full outline-none bg-transparent mr-12 sm:mr-16 lg:mr-20 font-english placeholder:font-english placeholder:select-none"
+            className="h-14 sm:h-20 w-full outline-none bg-transparent mr-12 sm:mr-16 lg:mr-20 font-english placeholder:font-english placeholder:select-none placeholder:text-gray-50"
             placeholder="Search..."
           />
           <IoCloseOutline
@@ -65,12 +65,12 @@ const Header = () => {
             {theme === "light" ? (
               <MdDarkMode
                 onClick={toggleTheme}
-                className="text-xl sm:text-2xl lg:text-3xl text-[#DCF9EB] cursor-pointer"
+                className="text-xl sm:text-2xl lg:text-3xl text-gray-50 cursor-pointer"
               />
             ) : (
               <MdOutlineLightMode
                 onClick={toggleTheme}
-                className="text-xl sm:text-2xl lg:text-3xl text-[#DCF9EB] cursor-pointer"
+                className="text-xl sm:text-2xl lg:text-3xl text-gray-50 cursor-pointer"
               />
             )}
           </div>
