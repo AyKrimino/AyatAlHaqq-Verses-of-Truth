@@ -2,18 +2,30 @@ import logo from "../assets/images/logo.png";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Header = () => {
-  const [searchIsActive, setSearchIsActive] = useState(true);
+  const [searchIsActive, setSearchIsActive] = useState(false);
   const inputRef = useRef(null);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const getClasses = (theme) => {
+    return theme === "light"
+      ? "bg-[#2D8C7F] text-[#DCF9EB]"
+      : "bg-[#0F5734] text-[#DCF9EB]";
+  };
 
   useEffect(() => {
     if (searchIsActive) inputRef.current?.focus();
   }, [searchIsActive]);
 
   return (
-    <div className="bg-[#0F5734] p-2 px-4 sm:px-8 lg:px-12 text-xs sm:text-base lg:text-lg text-[#DCF9EB] flex items-center justify-between">
+    <div
+      className={`p-2 px-4 sm:px-8 lg:px-12 text-xs sm:text-base lg:text-lg flex items-center justify-between ${getClasses(
+        theme
+      )}`}
+    >
       {searchIsActive ? (
         <div className="flex items-center w-screen relative">
           <input
@@ -50,8 +62,17 @@ const Header = () => {
               onClick={() => setSearchIsActive(true)}
               className="text-xl sm:text-2xl lg:text-3xl cursor-pointer"
             />
-            <MdDarkMode className="hidden text-xl sm:text-2xl lg:text-3xl text-[#121212] cursor-pointer" />
-            <MdOutlineLightMode className="text-xl sm:text-2xl lg:text-3xl text-[#DCF9EB] cursor-pointer" />
+            {theme === "light" ? (
+              <MdDarkMode
+                onClick={toggleTheme}
+                className="text-xl sm:text-2xl lg:text-3xl text-[#DCF9EB] cursor-pointer"
+              />
+            ) : (
+              <MdOutlineLightMode
+                onClick={toggleTheme}
+                className="text-xl sm:text-2xl lg:text-3xl text-[#DCF9EB] cursor-pointer"
+              />
+            )}
           </div>
         </>
       )}
