@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <div
-      className={`p-2 px-4 sm:px-8 lg:px-12 text-xs sm:text-base lg:text-lg flex items-center justify-between ${getClasses(
+      className={`p-2 px-4 sm:px-8 w-full h-[10%] lg:px-28 text-xs lg:text-sm flex items-center justify-between ${getClasses(
         theme
       )}`}
     >
@@ -31,14 +31,14 @@ const Header = () => {
           <input
             ref={inputRef}
             type="text"
-            className="h-14 sm:h-20 w-full outline-none bg-transparent mr-12 sm:mr-16 lg:mr-20 font-english placeholder:font-english placeholder:select-none placeholder:text-gray-50"
+            className="h-12 sm:h-18 w-full outline-none bg-transparent mr-12 sm:mr-16 lg:mr-20 font-english placeholder:font-english placeholder:select-none placeholder:text-gray-50"
             placeholder="Search..."
           />
           <IoCloseOutline
             onClick={() => setSearchIsActive(false)}
-            className="text-xl sm:text-2xl lg:text-3xl cursor-pointer absolute right-6 sm:right-8 lg:right-10"
+            className="text-lg lg:text-xl cursor-pointer absolute right-6"
           />
-          <IoIosSearch className="text-xl sm:text-2xl lg:text-3xl cursor-pointer absolute right-0" />
+          <IoIosSearch className="text-lg lg:text-xl cursor-pointer absolute right-0" />
         </div>
       ) : (
         <>
@@ -46,31 +46,31 @@ const Header = () => {
             <img
               src={logo}
               alt="logo"
-              className="h-14 sm:h-20 w-14 sm:w-20 select-none cursor-pointer"
+              className="h-12 w-12 lg:h-14 lg:w-14 select-none cursor-pointer"
               style={{
                 filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7))",
               }}
             />
             <div className="">
               <h3 className="font-english tracking-wide">Ayat Al Haqq</h3>
-              <h3 className="text-right font-arabic">آيات الحق</h3>
+              <h3 className="text-right font-quran-calligraphy">آيات الحق</h3>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <IoCloseOutline className="hidden text-xl sm:text-2xl lg:text-3xl cursor-pointer" />
+            <IoCloseOutline className="hidden text-lg cursor-pointer" />
             <IoIosSearch
               onClick={() => setSearchIsActive(true)}
-              className="text-xl sm:text-2xl lg:text-3xl cursor-pointer"
+              className="text-lg lg:text-xl cursor-pointer"
             />
             {theme === "light" ? (
               <MdDarkMode
                 onClick={toggleTheme}
-                className="text-xl sm:text-2xl lg:text-3xl text-gray-50 cursor-pointer"
+                className="text-lg lg:text-xl text-gray-50 cursor-pointer"
               />
             ) : (
               <MdOutlineLightMode
                 onClick={toggleTheme}
-                className="text-xl sm:text-2xl lg:text-3xl text-gray-50 cursor-pointer"
+                className="text-lg lg:text-xl text-gray-50 cursor-pointer"
               />
             )}
           </div>

@@ -13,7 +13,7 @@ const App = () => {
   };
 
   return (
-    <div className={`min-h-screen ${getClasses(theme)}`}>
+    <div className={`h-screen ${getClasses(theme)}`}>
       <Routes>
         <Route path="/" element={<MainLayout />}></Route>
       </Routes>
