@@ -51,9 +51,9 @@ const Header = () => {
                 filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7))",
               }}
             />
-            <div className="">
+            <div className="space-y-2 font-semibold">
               <h3 className="font-english tracking-wide">Ayat Al Haqq</h3>
-              <h3 className="text-right font-quran-calligraphy">آيات الحق</h3>
+              <h3 className="text-right font-arabic tracking-wider">آيات الحق</h3>
             </div>
           </div>
           <div className="flex items-center gap-2">

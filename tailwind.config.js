@@ -17,6 +17,7 @@ export default {
           },
           "&::-webkit-scrollbar-track": {
             background: "transparent",
+            paddingRight: "10px",
           },
           "&::-webkit-scrollbar-thumb": {
             background: "#256F67",
@@ -26,6 +27,7 @@ export default {
           },
           "&::-webkit-scrollbar-thumb:hover": {
             background: "#226B61",
+            cursor: "pointer",
           },
           "&::-webkit-scrollbar-thumb:active": {
             background: "#1E6356",
