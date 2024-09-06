@@ -1,6 +1,6 @@
 import logo from "../assets/images/logo.png";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoIosList } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -53,7 +53,9 @@ const Header = () => {
             />
             <div className="space-y-2 font-semibold">
               <h3 className="font-english tracking-wide">Ayat Al Haqq</h3>
-              <h3 className="text-right font-arabic tracking-wider">آيات الحق</h3>
+              <h3 className="text-right font-arabic tracking-wider">
+                آيات الحق
+              </h3>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -73,6 +75,7 @@ const Header = () => {
                 className="text-lg lg:text-xl text-gray-50 cursor-pointer"
               />
             )}
+            <IoIosList className="text-lg lg:text-xl text-gray-50 cursor-pointer" />
           </div>
         </>
       )}
