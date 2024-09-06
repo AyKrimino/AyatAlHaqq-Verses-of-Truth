@@ -4,11 +4,13 @@ import { IoIosSearch, IoIosList } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { ChaptersListContext } from "../context/ChaptersListContext";
 
 const Header = () => {
   const [searchIsActive, setSearchIsActive] = useState(false);
   const inputRef = useRef(null);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleChaptersListIsActive } = useContext(ChaptersListContext);
 
   const getClasses = (theme) => {
     return theme === "light"
@@ -75,7 +77,10 @@ const Header = () => {
                 className="text-lg lg:text-xl text-gray-50 cursor-pointer"
               />
             )}
-            <IoIosList className="text-lg lg:text-xl text-gray-50 cursor-pointer" />
+            <IoIosList
+              onClick={toggleChaptersListIsActive}
+              className="text-lg lg:text-xl text-gray-50 cursor-pointer"
+            />
           </div>
         </>
       )}
