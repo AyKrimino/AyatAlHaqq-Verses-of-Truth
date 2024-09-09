@@ -1,9 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ChaptersListContext = createContext();
 
 export const ChaptersListProvider = ({ children }) => {
   const [chaptersListIsActive, setChaptersListIsActive] = useState(false);
+  const [selectedSurah, setSelectedSurah] = useState(
+    () => parseInt(localStorage.getItem("selectedSurah")) || 1
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selectedSurah", selectedSurah);
+  }, [selectedSurah]);
+
+  const changeSelectedSurah = (chapterId) => {
+    setSelectedSurah(chapterId);
+  };
 
   const toggleChaptersListIsActive = () => {
     setChaptersListIsActive(!chaptersListIsActive);
@@ -13,6 +24,9 @@ export const ChaptersListProvider = ({ children }) => {
     chaptersListIsActive,
     setChaptersListIsActive,
     toggleChaptersListIsActive,
+    selectedSurah,
+    setSelectedSurah,
+    changeSelectedSurah,
   };
 
   return (

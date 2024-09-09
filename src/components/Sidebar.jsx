@@ -7,7 +7,8 @@ import { ThemeContext } from "../context/ThemeContext";
 
 const Sidebar = () => {
   const [chapters, setChapters] = useState([]);
-  const { setChaptersListIsActive } = useContext(ChaptersListContext);
+  const { setChaptersListIsActive, selectedSurah, changeSelectedSurah } =
+    useContext(ChaptersListContext);
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -46,12 +47,14 @@ const Sidebar = () => {
           onClick={() => setChaptersListIsActive(false)}
         />
       </div>
-      {chapters.map((chapter) => (
+      {chapters.map((chapter, index) => (
         <SurahItem
-          key={chapter.id}
+          key={index}
           surahNumber={chapter.id}
           surahArabicTitle={chapter.name_arabic}
           surahEnglishTitle={chapter.name_simple}
+          isSelected={chapter.id === selectedSurah}
+          onClick={() => changeSelectedSurah(chapter.id)}
         />
       ))}
     </div>
