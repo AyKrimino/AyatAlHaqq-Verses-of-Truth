@@ -1,6 +1,6 @@
 import SurahItem from "./SurahItem";
 import { getChaptersList } from "../services/GlobalAPI";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { ChaptersListContext } from "../context/ChaptersListContext";
 import { ThemeContext } from "../context/ThemeContext";
@@ -10,6 +10,7 @@ const Sidebar = () => {
   const { setChaptersListIsActive, selectedSurah, changeSelectedSurah } =
     useContext(ChaptersListContext);
   const { theme } = useContext(ThemeContext);
+  const surahRefs = useRef([]);
 
   useEffect(() => {
     getChapters();
@@ -23,6 +24,21 @@ const Sidebar = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (chapters.length > 0) {
+      const selectedSurahIndex = chapters.findIndex(
+        (chapter) => selectedSurah === chapter.id
+      );
+
+      if (surahRefs.current[selectedSurahIndex]) {
+        surahRefs.current[selectedSurahIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  }, [chapters, selectedSurah]);
 
   return (
     <div
@@ -55,6 +71,7 @@ const Sidebar = () => {
           surahEnglishTitle={chapter.name_simple}
           isSelected={chapter.id === selectedSurah}
           onClick={() => changeSelectedSurah(chapter.id)}
+          ref={(el) => (surahRefs.current[index] = el)}
         />
       ))}
     </div>
