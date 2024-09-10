@@ -42,7 +42,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`w-[100%] md:w-[25%] h-[90%] p-4 px-8 pb-8 overflow-y-auto overscroll-none scroll-smooth scrollbar-webkit flex-col gap-3 text-white flex border-t ${
+      className={`w-[100%] md:w-[25%] h-[100%] p-4 px-8 pb-8 overflow-y-auto overflow-x-hidden overscroll-none scroll-smooth scrollbar-webkit flex-col gap-3 text-white flex border-t ${
         theme === "light"
           ? "bg-[#2D8C7F] border-[#DCF9EB]"
           : "bg-[#0F5734] border-[#121212]"
