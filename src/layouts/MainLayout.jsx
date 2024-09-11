@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { useContext } from "react";
 import { ChaptersListContext } from "../context/ChaptersListContext";
-import SurahPage from "../pages/SurahPage";
 
 const MainLayout = () => {
   const { chaptersListIsActive } = useContext(ChaptersListContext);
@@ -13,9 +12,8 @@ const MainLayout = () => {
       <Header />
       <div className="flex h-[90%]">
         {chaptersListIsActive && <Sidebar />}
-        <SurahPage />
+        <Outlet />
       </div>
-      <Outlet />
     </>
   );
 };
