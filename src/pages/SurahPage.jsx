@@ -22,7 +22,7 @@ const SurahPage = () => {
     <div
       className={`${
         chaptersListIsActive && "hidden"
-      } md:block h-[100%] w-[100%]`}
+      } md:block h-[100%] w-[100%] overflow-y-auto overflow-x-hidden overscroll-none scroll-smooth scrollbar-webkit`}
     >
       <SurahHeader />
       {surahMode === "read" ? <ReadSurah id={id} /> : <ListenSurah id={id} />}
