@@ -1,15 +1,16 @@
 import { forwardRef, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { Link, useParams } from "react-router-dom";
 
 const SurahItem = forwardRef(
-  (
-    { surahNumber, surahEnglishTitle, surahArabicTitle, onClick, isSelected },
-    ref
-  ) => {
+  ({ surahNumber, surahEnglishTitle, surahArabicTitle, onClick }, ref) => {
     const { theme } = useContext(ThemeContext);
+    const { id } = useParams();
+    const isSelected = surahNumber == id;
 
     return (
-      <div
+      <Link
+        to={`/surah/${surahNumber}`}
         ref={ref}
         onClick={onClick}
         className={`flex items-center gap-4 px-2 py-3 ${
@@ -31,7 +32,7 @@ const SurahItem = forwardRef(
             {surahArabicTitle}
           </p>
         </div>
-      </div>
+      </Link>
     );
   }
 );

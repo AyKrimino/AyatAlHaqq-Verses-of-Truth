@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SurahHeader from "../components/SurahHeader";
 import { ChaptersListContext } from "../context/ChaptersListContext";
 import { SurahContext } from "../context/SurahContext";
@@ -7,9 +7,16 @@ import ListenSurah from "../components/ListenSurah";
 import { useParams } from "react-router-dom";
 
 const SurahPage = () => {
-  const { chaptersListIsActive } = useContext(ChaptersListContext);
+  const { chaptersListIsActive, changeSelectedSurah } =
+    useContext(ChaptersListContext);
   const { surahMode } = useContext(SurahContext);
   const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      changeSelectedSurah(parseInt(id));
+    }
+  }, [id]);
 
   return (
     <div

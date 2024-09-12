@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SurahContext } from "../context/SurahContext";
 import { ThemeContext } from "../context/ThemeContext";
+import { ChaptersListContext } from "../context/ChaptersListContext";
 
 const SurahHeader = () => {
   const { surahMode, setSurahMode } = useContext(SurahContext);
+  const { selectedSurah } = useContext(ChaptersListContext);
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -12,6 +14,7 @@ const SurahHeader = () => {
       <div className="flex justify-center text-sm sm:text-base">
         {/* Read Surah Button */}
         <Link
+          to={`/surah/${selectedSurah}`}
           onClick={() => setSurahMode("read")}
           className={`w-full flex flex-col items-center gap-2 ${
             theme === "light"
@@ -32,6 +35,7 @@ const SurahHeader = () => {
         </Link>
         {/* Listen Surah Button */}
         <Link
+          to={`/surah/${selectedSurah}`}
           onClick={() => setSurahMode("listen")}
           className={`w-full flex flex-col items-center gap-2 ${
             theme === "light"
