@@ -2,17 +2,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gulzar&display=swap");
+@import url("https://db.onlinewebfonts.com/c/f0034555c887b9dbfb67c6fd228d8f33?family=KFGQPC+Uthman+Taha+Naskh");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "UthmanicHafs1Ver18";
+  src: url("./assets/fonts/UthmanicHafs1Ver18.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sura_names";
+  src: url("./assets/fonts/sura_names.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .font-arabic {
   font-family: "Gulzar", "amiri", serif;
 }
 
 .font-arabic2 {
-  font-family: "amiri";
+  font-family: "amiri", serif;
+}
+
+.font-arabic3 {
+  font-family: "KFGQPC Uthman Taha Naskh", serif;
+}
+
+.font-arabic4 {
+  font-family: "Noto Naskh Arabic", serif;
+}
+
+.font-arabic5 {
+  font-family: "Scheherazade New";
+}
+
+.font-arabic6 {
+  font-family: "UthmanicHafs1Ver18", sans-serif;
+}
+
+.font-arabic7 {
+  font-family: "sura_names", sans-serif;
 }
 
 .font-english {

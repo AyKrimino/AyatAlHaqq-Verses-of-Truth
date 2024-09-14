@@ -5,5 +5,6 @@ const api = axios.create({
 });
 
 export const getChaptersList = api.get("/chapters?language=ar");
+export const getChapter = (id) => api.get(`/chapters/${id}?language=ar`);
 export const getChapterTextById = (id) =>
-  api.get(`/quran/verses/indopak?chapter_number=${id}`);
+  api.get(`/quran/verses/uthmani?chapter_number=${id}`);
