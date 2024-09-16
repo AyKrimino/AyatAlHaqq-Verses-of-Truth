@@ -9,7 +9,7 @@ const App = () => {
 
   const getClasses = (theme) => {
     return theme === "dark"
-      ? "bg-[#121212] text-gray-50"
+      ? "bg-[#191919] text-gray-50"
       : "bg-[#DCF9EB] text-gray-900";
   };
 

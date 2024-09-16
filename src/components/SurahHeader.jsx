@@ -46,7 +46,7 @@ const SurahHeader = () => {
                   surahMode === "listen" ? "bg-[#0b4127]" : "bg-[#0d4a2c]"
                 } hover:bg-[#0b4127]`
           } transition-all duration-300 ease-in-out text-gray-50 font-bold py-2 px-4 rounded-tr-full rounded-br-full ${
-            theme === "dark" ? "border-[#121212]" : "border-[#DCF9EB]"
+            theme === "dark" ? "border-[#191919]" : "border-[#DCF9EB]"
           } border-l`}
         >
           <span className="font-english tracking-wide">Listen Surah</span>

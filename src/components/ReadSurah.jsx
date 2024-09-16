@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getChapter, getChapterTextById } from "../services/GlobalAPI";
+import Verse from "./Verse";
 
 const ReadSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
@@ -36,14 +37,15 @@ const ReadSurah = ({ id }) => {
           {chapter.bismillah_pre && "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ"}
         </h4>
       </div>
-      {chapterText.map((verse, index) => (
-        <div key={verse.id}>
-          <div className="">
-            {verse.text_uthmani} <span className="">{index + 1}</span>
-          </div>
-          <br />
-        </div>
-      ))}
+      <div className="">
+        {chapterText.map((verse, index) => (
+          <Verse
+            key={verse.id}
+            verseNumber={index + 1}
+            text={verse.text_uthmani}
+          />
+        ))}
+      </div>
     </div>
   );
 };
