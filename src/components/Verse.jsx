@@ -6,11 +6,11 @@ const Verse = ({ verseNumber, text }) => {
 
   return (
     <div className="w-full">
-      <div className="py-3 mt-3 space-x-2">
-        <span className="inline text-gray-50 border border-gray-900 rounded-br-full rounded-tl-full bg-[#2D8C7F]">
+      <div className="py-3 mt-3">
+        {text}
+        <span className="inline mr-2 text-gray-50 border border-gray-900 rounded-br-full rounded-tl-full bg-[#2D8C7F]">
           {verseNumber}
         </span>
-        <div className="inline">{text}</div>
       </div>
       <div
         className={`h-[.5px] w-full ${
