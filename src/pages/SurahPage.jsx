@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import SurahHeader from "../components/SurahHeader";
 import { ChaptersListContext } from "../context/ChaptersListContext";
 import { SurahContext } from "../context/SurahContext";
@@ -11,15 +11,22 @@ const SurahPage = () => {
     useContext(ChaptersListContext);
   const { surahMode } = useContext(SurahContext);
   const { id } = useParams();
+  const surahPageRef = useRef(null);
 
   useEffect(() => {
     if (id) {
       changeSelectedSurah(parseInt(id));
     }
+
+    surahPageRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [id]);
 
   return (
     <div
+      ref={surahPageRef}
       className={`${
         chaptersListIsActive && "hidden"
       } md:block h-[100%] w-[100%] overflow-y-auto overflow-x-hidden overscroll-none scroll-smooth scrollbar-webkit`}

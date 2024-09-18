@@ -15,7 +15,6 @@ const Sidebar = () => {
   useEffect(() => {
     getChapters();
   }, []);
-
   const getChapters = async () => {
     try {
       const response = await getChaptersList;
@@ -26,7 +25,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (chapters.length > 0) {
+    if (selectedSurah && surahRefs.current.length > 0) {
       const selectedSurahIndex = chapters.findIndex(
         (chapter) => selectedSurah === chapter.id
       );

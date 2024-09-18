@@ -30,7 +30,9 @@ const ReadSurah = ({ id }) => {
   };
 
   return (
-    <div className="font-arabic6 text-2xl tracking-wider font-bold text-right p-4 mb-8">
+    <div
+      className="font-arabic6 text-2xl tracking-wider font-bold text-right p-4 mb-8"
+    >
       <div className="tracking-normal text-center pb-8 space-y-8 mt-4">
         <h2 className="text-5xl">{chapter.name_arabic}</h2>
         <h4 className="text-3xl">
