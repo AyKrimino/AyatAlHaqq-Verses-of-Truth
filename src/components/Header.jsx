@@ -5,6 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { ChaptersListContext } from "../context/ChaptersListContext";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchIsActive, setSearchIsActive] = useState(false);
@@ -44,22 +45,24 @@ const Header = () => {
         </div>
       ) : (
         <>
-          <div className="flex items-center gap-2">
-            <img
-              src={logo}
-              alt="logo"
-              className="h-12 w-12 lg:h-14 lg:w-14 select-none cursor-pointer"
-              style={{
-                filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7))",
-              }}
-            />
-            <div className="space-y-2 font-semibold">
-              <h3 className="font-english tracking-wide">Ayat Al Haqq</h3>
-              <h3 className="text-right font-arabic tracking-wider">
-                آيات الحق
-              </h3>
+          <Link to={"/"}>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <img
+                src={logo}
+                alt="logo"
+                className="h-12 w-12 lg:h-14 lg:w-14 select-none"
+                style={{
+                  filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7))",
+                }}
+              />
+              <div className="space-y-2 font-semibold">
+                <h3 className="font-english tracking-wide">Ayat Al Haqq</h3>
+                <h3 className="text-right font-arabic tracking-wider">
+                  آيات الحق
+                </h3>
+              </div>
             </div>
-          </div>
+          </Link>
           <div className="flex items-center gap-2">
             <IoCloseOutline className="hidden text-lg cursor-pointer" />
             <IoIosSearch

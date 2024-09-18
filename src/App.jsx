@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout";
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 import SurahPage from "./pages/SurahPage";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -17,6 +18,7 @@ const App = () => {
     <div className={`h-screen ${getClasses(theme)}`}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
           <Route path="surah/:id" element={<SurahPage />} />
         </Route>
       </Routes>

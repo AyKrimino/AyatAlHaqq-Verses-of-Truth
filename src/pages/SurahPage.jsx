@@ -5,6 +5,7 @@ import { SurahContext } from "../context/SurahContext";
 import ReadSurah from "../components/ReadSurah";
 import ListenSurah from "../components/ListenSurah";
 import { useParams } from "react-router-dom";
+import SurahNavigationButtons from "../components/SurahNavigationButtons";
 
 const SurahPage = () => {
   const { chaptersListIsActive, changeSelectedSurah } =
@@ -33,6 +34,7 @@ const SurahPage = () => {
     >
       <SurahHeader />
       {surahMode === "read" ? <ReadSurah id={id} /> : <ListenSurah id={id} />}
+      <SurahNavigationButtons />
     </div>
   );
 };

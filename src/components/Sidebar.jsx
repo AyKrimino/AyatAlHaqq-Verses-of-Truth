@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { ChaptersListContext } from "../context/ChaptersListContext";
 import { ThemeContext } from "../context/ThemeContext";
+import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const [chapters, setChapters] = useState([]);
@@ -11,6 +12,8 @@ const Sidebar = () => {
     useContext(ChaptersListContext);
   const { theme } = useContext(ThemeContext);
   const surahRefs = useRef([]);
+  const sidebarRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     getChapters();
@@ -36,11 +39,19 @@ const Sidebar = () => {
           block: "start",
         });
       }
+
+      if (location.pathname === "/") {
+        sidebarRef.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     }
-  }, [chapters, selectedSurah]);
+  }, [chapters, selectedSurah, location]);
 
   return (
     <div
+      ref={sidebarRef}
       className={`w-[100%] md:w-[25%] h-[100%] p-4 px-8 pb-8 overflow-y-auto overflow-x-hidden overscroll-none scroll-smooth scrollbar-webkit flex-col gap-3 text-white flex border-t ${
         theme === "light"
           ? "bg-[#2D8C7F] border-[#DCF9EB]"

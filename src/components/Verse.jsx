@@ -13,7 +13,7 @@ const Verse = ({ verseNumber, text }) => {
         <VerseNumber number={verseNumber} />
       </div>
       <div
-        className={`h-[.5px] w-full ${
+        className={`h-[.5px] w-full opacity-30 ${
           theme === "light" ? "bg-gray-900" : "bg-gray-50"
         }`}
       ></div>
