@@ -8,3 +8,4 @@ export const getChaptersList = api.get("/chapters?language=ar");
 export const getChapter = (id) => api.get(`/chapters/${id}?language=ar`);
 export const getChapterTextById = (id) =>
   api.get(`/quran/verses/uthmani?chapter_number=${id}`);
+export const getChapterInfo = (id) => api.get(`/chapters/${id}/info`);
