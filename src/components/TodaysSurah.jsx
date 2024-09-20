@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getChapter, getChapterInfo } from "../services/GlobalAPI";
 import { ThemeContext } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
+import { SurahContext } from "../context/SurahContext";
 
 const TodaysSurah = () => {
   const [surahNumber, setSurahNumber] = useState(null);
@@ -8,6 +10,7 @@ const TodaysSurah = () => {
   const [surahDescription, setSurahDescription] = useState("");
   const [surahDescriptionSource, setSurahDescriptionSource] = useState("");
   const { theme } = useContext(ThemeContext);
+  const { setSurahMode } = useContext(SurahContext);
 
   useEffect(() => {
     const today = new Date().toDateString();
@@ -68,10 +71,18 @@ const TodaysSurah = () => {
                 : "bg-[#141414] text-gray-100 border-[#0F5734]"
             } p-6 border-l-4 rounded-lg shadow-md my-4 mx-4 max-w-3xl font-english`}
           >
-            <h2 className="text-2xl font-bold">
-              Today's Highlighted Surah ({surahName})
-            </h2>
-            <p className="text-xl font-semibold">Surah Number: {surahNumber}</p>
+            <Link
+              to={`/surah/${surahNumber}`}
+              onClick={() => setSurahMode("read")}
+              className="hover:underline"
+            >
+              <h2 className="text-2xl font-bold">
+                Today's Highlighted Surah ({surahName})
+              </h2>
+              <p className="text-xl font-semibold">
+                Surah Number: {surahNumber}
+              </p>
+            </Link>
             <blockquote className="text-md md:text-lg italic my-4">
               “{surahDescription}”
             </blockquote>
