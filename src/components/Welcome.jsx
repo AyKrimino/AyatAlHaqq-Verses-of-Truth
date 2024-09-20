@@ -2,10 +2,12 @@ import React from "react";
 
 const Welcome = () => {
   return (
-    <div className="">
-      <h1 className="font-english">Welcome to AyatAlHaqq (Verses of Truth)</h1>
+    <div className="flex justify-center">
+
+    <div className="mt-2 px-4 sm:px-8 text-base sm:text-lg lg:text-xl max-w-3xl flex flex-col items-center justify-center">
+      <h1 className="mb-2 font-english text-3xl font-bold">Welcome to AyatAlHaqq (Verses of Truth)</h1>
       <p className="font-arabic2 text-right" dir="rtl">
-        " الحمد لله وكفى وسلام على عباده الذين اصطفى، والصلاة والسلام على خاتم
+        الحمد لله وكفى وسلام على عباده الذين اصطفى، والصلاة والسلام على خاتم
         الأنبياء، وعلى آله وصحبه الطيبين الأنقياء، وعن التابعين لهم أهل الصلاح
         والتقى، وعمن تبع سبيلهم وسار على نهجهم من أولي النُّهى، أما بعد : فإن
         (القرآن الكريم العظيم) يحمل في (أياته الكريمة المعصومة) خصائص القوة
@@ -18,8 +20,9 @@ const Welcome = () => {
         فلا يمكن للمخلوق العاجز الضعيف أن يحرّف فيه أو يُبدّل ، ولو تظاهر على
         ذلك الجن والإنس وإنما يَتَوَهَّمُ إمكانَ التَّحريفِ في دين الله مَنْ
         ضَلَّ سواء السبيل، وتنكب طريق المهديين، وأسلم عقله للغاوين ، ولا يحيق
-        المكر السيئ إلا بأهلِهِ. "
+        المكر السيئ إلا بأهلِهِ.
       </p>
+    </div>
     </div>
   );
 };
