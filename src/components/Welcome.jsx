@@ -3,12 +3,22 @@ import React from "react";
 const Welcome = () => {
   return (
     <div className="">
-      <h1 className="">Welcome to AyatAlHaqq (Verses of Truth)</h1>
-      <p className="">
-        "Embark on a journey of spiritual enlightenment. Whether you wish to
-        recite the sacred words or listen to their divine melody, we are here to
-        guide you through the Quran. May every verse bring you peace and
-        understanding."
+      <h1 className="font-english">Welcome to AyatAlHaqq (Verses of Truth)</h1>
+      <p className="font-arabic2 text-right" dir="rtl">
+        " الحمد لله وكفى وسلام على عباده الذين اصطفى، والصلاة والسلام على خاتم
+        الأنبياء، وعلى آله وصحبه الطيبين الأنقياء، وعن التابعين لهم أهل الصلاح
+        والتقى، وعمن تبع سبيلهم وسار على نهجهم من أولي النُّهى، أما بعد : فإن
+        (القرآن الكريم العظيم) يحمل في (أياته الكريمة المعصومة) خصائص القوة
+        والبقاء، كشجرة طيبة أصلها ثابت وفرعها في السَّماء، وذلك لأنه من عند الله
+        الواحد القهار، الذي بيده الخَلْق والأمر، وهو سبحانه قد جعل هذا (القرآن)
+        رسالته الخاتمة إلى البشرية، وتكفّل بحفظه إلى يوم الدين فقال:{" "}
+        <span className="font-arabic6">
+          ﴿ إِنَّا نَحْنُ نَزَّلْنَا الذِكْرَ وَإِنَّا لَهُ لَحَفِظُونَ ﴾
+        </span>{" "}
+        فلا يمكن للمخلوق العاجز الضعيف أن يحرّف فيه أو يُبدّل ، ولو تظاهر على
+        ذلك الجن والإنس وإنما يَتَوَهَّمُ إمكانَ التَّحريفِ في دين الله مَنْ
+        ضَلَّ سواء السبيل، وتنكب طريق المهديين، وأسلم عقله للغاوين ، ولا يحيق
+        المكر السيئ إلا بأهلِهِ. "
       </p>
     </div>
   );
