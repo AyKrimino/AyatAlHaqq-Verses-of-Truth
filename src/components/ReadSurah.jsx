@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Verse from "./Verse";
 import { fetchChapter, fetchChapterText } from "../services/ChapterService";
+import Verse from "./Verse";
 
 const ReadSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
