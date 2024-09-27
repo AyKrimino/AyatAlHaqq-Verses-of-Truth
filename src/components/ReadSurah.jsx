@@ -1,38 +1,28 @@
 import { useEffect, useState } from "react";
-import { getChapter, getChapterTextById } from "../services/GlobalAPI";
 import Verse from "./Verse";
+import { fetchChapter, fetchChapterText } from "../services/ChapterService";
 
 const ReadSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
   const [chapter, setChapter] = useState({});
 
   useEffect(() => {
-    fetchChapterText();
-    fetchChapter();
+    const fetchData = async () => {
+      try {
+        const chapterData = await fetchChapter(id);
+        setChapter(chapterData);
+
+        const chapterTextData = await fetchChapterText(id);
+        setChapterText(chapterTextData);
+      } catch (error) {
+        console.error("Error fetching chapter or chapter text:", error);
+      }
+    };
+    fetchData();
   }, [id]);
 
-  const fetchChapterText = async () => {
-    try {
-      const res = await getChapterTextById(id);
-      setChapterText(res.data.verses);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchChapter = async () => {
-    try {
-      const res = await getChapter(id);
-      setChapter(res.data.chapter);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <div
-      className="font-arabic6 text-2xl tracking-wider font-bold text-right p-4 mb-6"
-    >
+    <div className="font-arabic6 text-2xl tracking-wider font-bold text-right p-4 mb-6">
       <div className="tracking-normal text-center pb-8 space-y-8 mt-4">
         <h2 className="text-5xl">{chapter.name_arabic}</h2>
         <h4 className="text-3xl">
