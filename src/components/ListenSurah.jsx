@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { fetchChapter, fetchChapterText } from "../services/ChapterService";
 import Verse from "./Verse";
+import { getChapterAudioById } from "../services/GlobalAPI";
 
 const ListenSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
   const [chapter, setChapter] = useState({});
   const [activeVerseIndex, setActiveVerseIndex] = useState(1);
   const [activeVerse, setActiveVerse] = useState("");
+  const [audioFiles, setAudioFiles] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +26,18 @@ const ListenSurah = ({ id }) => {
       }
     };
     fetchData();
+    fetchChapterAudio(id);
   }, [id]);
+
+  const fetchChapterAudio = async (id) => {
+    try {
+      const res = await getChapterAudioById(id);
+      console.log(res);
+      setAudioFiles(res.data.audio_files);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="font-arabic6 text-2xl tracking-wider font-bold text-right p-4 mb-6">
