@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchChapter, fetchChapterText } from "../services/ChapterService";
-import Verse from "./Verse";
 import { getChapterAudioById } from "../services/GlobalAPI";
+import Verse from "./Verse";
 
 const ListenSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
@@ -9,6 +9,7 @@ const ListenSurah = ({ id }) => {
   const [activeVerseIndex, setActiveVerseIndex] = useState(1);
   const [activeVerse, setActiveVerse] = useState("");
   const [audioFiles, setAudioFiles] = useState([]);
+  const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,10 +33,19 @@ const ListenSurah = ({ id }) => {
   const fetchChapterAudio = async (id) => {
     try {
       const res = await getChapterAudioById(id);
-      console.log(res);
       setAudioFiles(res.data.audio_files);
+      setCurrentAudioIndex(0);
+      setActiveVerseIndex(1);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleAudioEnd = () => {
+    if (currentAudioIndex < audioFiles.length - 1) {
+      setCurrentAudioIndex(currentAudioIndex + 1);
+      setActiveVerseIndex(activeVerseIndex + 1);
+      setActiveVerse(chapterText[activeVerseIndex]?.text_uthmani || "");
     }
   };
 
@@ -50,6 +60,12 @@ const ListenSurah = ({ id }) => {
       {activeVerse && (
         <Verse verseNumber={activeVerseIndex} text={activeVerse} />
       )}
+      <audio
+        controls
+        autoPlay
+        src={`https://verses.quran.com/${audioFiles[currentAudioIndex]?.url}`}
+        onEnded={handleAudioEnd}
+      ></audio>
     </div>
   );
 };
