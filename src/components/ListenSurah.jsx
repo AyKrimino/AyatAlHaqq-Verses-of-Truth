@@ -10,13 +10,17 @@ const ListenSurah = ({ id }) => {
   const [activeVerse, setActiveVerse] = useState("");
   const [audioFiles, setAudioFiles] = useState([]);
   const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch chapter details
         const chapterData = await fetchChapter(id);
         setChapter(chapterData);
 
+        // Fetch chapter text
         const chapterTextData = await fetchChapterText(id);
         setChapterText(chapterTextData);
         if (chapterTextData && chapterTextData.length > 0) {
@@ -26,26 +30,31 @@ const ListenSurah = ({ id }) => {
         console.error("Error fetching chapter or chapter text:", error);
       }
     };
+
     fetchData();
-    fetchChapterAudio(id);
   }, [id]);
 
-  const fetchChapterAudio = async (id) => {
-    try {
-      const res = await getChapterAudioById(id);
-      setAudioFiles(res.data.audio_files);
-      setCurrentAudioIndex(0);
-      setActiveVerseIndex(1);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    const fetchChapterAudio = async () => {
+      try {
+        const res = await getChapterAudioById(id, currentPageNumber);
+        setAudioFiles(res.data.audio_files);
+        setCurrentAudioIndex(0);
+        setTotalPages(res.data.pagination.total_pages);
+      } catch (error) {
+        console.error("Error fetching chapter audio:", error);
+      }
+    };
+    fetchChapterAudio();
+  }, [id, currentPageNumber]);
 
   const handleAudioEnd = () => {
+    setActiveVerseIndex((prevIndex) => prevIndex + 1);
+    setActiveVerse(chapterText[activeVerseIndex].text_uthmani);
     if (currentAudioIndex < audioFiles.length - 1) {
-      setCurrentAudioIndex(currentAudioIndex + 1);
-      setActiveVerseIndex(activeVerseIndex + 1);
-      setActiveVerse(chapterText[activeVerseIndex]?.text_uthmani || "");
+      setCurrentAudioIndex((prevIndex) => prevIndex + 1);
+    } else if (currentPageNumber < totalPages) {
+      setCurrentPageNumber((prev) => prev + 1);
     }
   };
 
