@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { fetchChapter, fetchChapterText } from "../services/ChapterService";
 import { getChapterAudioById } from "../services/GlobalAPI";
 import Verse from "./Verse";
 import { FaPlay, FaPause, FaStepBackward, FaStepForward } from "react-icons/fa";
+import { ThemeContext } from "../context/ThemeContext";
 
 const ListenSurah = ({ id }) => {
   const [chapterText, setChapterText] = useState([]);
@@ -17,6 +18,8 @@ const ListenSurah = ({ id }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { theme } = useContext(ThemeContext);
 
   const audioRef = useRef(null);
   const seekBarRef = useRef(null);
@@ -188,7 +191,9 @@ const ListenSurah = ({ id }) => {
       <div className="flex flex-col items-center gap-4 mt-8">
         <div className="flex items-center gap-4">
           <FaStepBackward
-            className="w-6 h-6 cursor-pointer"
+            className={`w-6 h-6 cursor-pointer ${
+              activeVerseIndex === 1 && "opacity-50"
+            }`}
             onClick={handlePrevVerse}
           />
           {isPlaying ? (
@@ -203,7 +208,9 @@ const ListenSurah = ({ id }) => {
             />
           )}
           <FaStepForward
-            className="w-6 h-6 cursor-pointer"
+            className={`w-6 h-6 cursor-pointer ${
+              activeVerseIndex === chapterText.length && "opacity-50"
+            }`}
             onClick={handleNextVerse}
           />
         </div>
@@ -215,7 +222,9 @@ const ListenSurah = ({ id }) => {
         >
           <div
             ref={seekBarRef}
-            className="absolute h-full bg-green-600 rounded-full"
+            className={`absolute h-full ${
+              theme === "light" ? "bg-[#2D8C7F]" : "bg-[#0F5734]"
+            } rounded-full`}
             style={{ width: `${(currentTime / duration) * 100}%` }}
           ></div>
         </div>
